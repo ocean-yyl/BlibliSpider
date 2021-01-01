@@ -1,5 +1,4 @@
 import requests
-import jsonpath
 
 def MakeUrlsWithPageNum(formatUrl,start: int, end: int):
     """
@@ -22,8 +21,7 @@ def WriteToFile(fileName:str,objUrls: list):
     :return:None
     """
     with open(fileName,"a",encoding="utf-8") as fileOpen:
-        for bvid in objUrls:
-            objUrl = "https://www.bilibili.com/video/{}".format(bvid)
+        for objUrl in objUrls:
             fileOpen.write(objUrl+"\n")
 
 
@@ -32,11 +30,12 @@ def Engine(fileName,formatUrl):
     爬虫引擎
     :return:
     """
-    urls = MakeUrlsWithPageNum(formatUrl,1,77)
+    urls = MakeUrlsWithPageNum(formatUrl,1,11)
+    print("\n".join(urls))
     WriteToFile(fileName, urls)
     print("Finished! 总共生成记录条数：{}".format(len(urls)))
 
 if __name__ == '__main__':
-    formatUrl = "https://www.bilibili.com/video/BV1TJ411Q7Wr?p={}"
+    formatUrl = "https://www.bilibili.com/video/BV1ts411G7ZD?p={}"
     fileName = "urls.txt"
     Engine(fileName,formatUrl)

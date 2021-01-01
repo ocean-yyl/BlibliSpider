@@ -17,8 +17,8 @@ def ReadUrlsFile(fileName):
 
 def DownUseYouGet(url):
     try:
-        subprocess.getoutput("you-get " + url + " -o D:\Download\九九高效练字")
-        # os.popen("you-get "+url).read()
+        subprocess.getoutput("you-get " + url)
+        # os.popen("you-get " + url).read()
     except:
         pass
 
@@ -33,5 +33,5 @@ def Engine(fileName):
 
 
 if __name__ == '__main__':
-    fileName = "下载个人上传视频集/urls.txt"
+    fileName = "urls.txt"
     Engine(fileName)
